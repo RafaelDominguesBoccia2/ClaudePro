@@ -20,13 +20,14 @@ function largada() {
     // Quantidade de voltas na pista
     let voltas = Number(ipt_voltas.value)
 
+    let podio = []
     let cavalos = []
 
     // Pedindo o nome singular de todos os cavalos
     // E criando um objeto para cada um deles
     // Armazenando o nome, o tempo sorteado na volta (tempo_volta) e o tempo acumulado de cada volta
     for (let i = 0; i < qtd_cavalos; i++) {
-        let nome_cavalo = prompt(`Digite o nome do cavalo ${i}`)
+        let nome_cavalo = prompt(`Digite o nome do cavalo ${i + 1}`)
         let info_cavalo = {
             nome: nome_cavalo,
             tempo_volta: 0, // x no enunciado
@@ -37,16 +38,21 @@ function largada() {
         cavalos.push(info_cavalo)
     }
 
+    console.log(cavalos)
+
     for (let i = 0; i < voltas; i++) {
         for (let i = 0; i < cavalos.length; i++) {
             // Randomização dos números
-           let random = ( Math.random()* 2) + 7
+            // Trunca os números a 1 casa decimal
+           let random = ( ( Math.random()* 2) + 7 ).toFixed(1)
+           random = Number(random)
 
             cavalos[i].tempo_volta = random
             cavalos[i].tempo_acumulado += cavalos[i].tempo_volta 
         }
-        
     }
+
+
 }
 </script>
 </html>
