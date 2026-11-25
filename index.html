@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Turfe</h1>
+
+    Quantidade de cavalos: <input type="text" id="ipt_qtd_cavalos"> <br><br>
+    Tamnho do Turfe(numero de voltas): <input type="text" id="ipt_voltas"><br><br>
+    <button onclick="largada()">Dar a Largada</button>
+</body>
+<script>
+function largada() {
+    // Quantidade de cavalos na corrida
+    let qtd_cavalos = Number(ipt_qtd_cavalos.value)
+
+    // Quantidade de voltas na pista
+    let voltas = Number(ipt_voltas.value)
+
+    let cavalos = []
+
+    // Pedindo o nome singular de todos os cavalos
+    // E criando um objeto para cada um deles
+    // Armazenando o nome, o tempo sorteado na volta (tempo_volta) e o tempo acumulado de cada volta
+    for (let i = 0; i < qtd_cavalos; i++) {
+        let nome_cavalo = prompt(`Digite o nome do cavalo ${i}`)
+        let info_cavalo = {
+            nome: nome_cavalo,
+            tempo_volta: 0, // x no enunciado
+            tempo_acumulado: 0 // y no enunciado
+        }
+
+        // Cria uma lista recheada de json
+        cavalos.push(info_cavalo)
+    }
+
+    for (let i = 0; i < voltas; i++) {
+        for (let i = 0; i < cavalos.length; i++) {
+            // Randomização dos números
+           let random = ( Math.random()* 2) + 7
+
+            cavalos[i].tempo_volta = random
+            cavalos[i].tempo_acumulado += cavalos[i].tempo_volta 
+        }
+        
+    }
+}
+</script>
+</html>
